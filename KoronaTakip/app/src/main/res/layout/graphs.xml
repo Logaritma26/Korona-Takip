@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:animateLayoutChanges="true">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="330dp"
+
+        android:animateLayoutChanges="true"
+        android:clipToPadding="false"
+        android:clickable="true"
+        android:focusable="true"
+        android:foregroundGravity="center"
+        android:overScrollMode="never"
+
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="0dp">
+
+
+    </androidx.viewpager.widget.ViewPager>
+
+    <SearchView
+        android:id="@+id/search_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+
+        android:animateLayoutChanges="true"
+        android:layout_below="@id/viewPager"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp" />
+
+    <ListView
+        android:id="@+id/list_item"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+
+        android:animateLayoutChanges="true"
+        android:gravity="center_horizontal"
+        android:paddingLeft="5dp"
+        android:visibility="gone"
+
+
+        android:layout_below="@+id/search_bar"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp" />
+
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:animateLayoutChanges="true"
+        android:clipToPadding="false"
+        android:clickable="true"
+        android:focusable="true"
+        android:foregroundGravity="center"
+        android:overScrollMode="never"
+
+        android:layout_below="@id/list_item"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp">
+
+    </androidx.viewpager.widget.ViewPager>
+
+
+
+
+</RelativeLayout>

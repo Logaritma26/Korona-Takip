@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/item_top_list"
+        android:icon="@drawable/ic_timeline_black"
+        android:title="name"/>
+
+    <item
+        android:id="@+id/item_graphic"
+        android:icon="@drawable/ic_insert_chart_black"
+        android:title="name"/>
+
+    <item
+        android:id="@+id/item_info"
+        android:icon="@drawable/ic_info_black"
+        android:title="name"/>
+
+    <item
+        android:id="@+id/item_test"
+        android:icon="@drawable/ic_test_black"
+        android:title="name"/>
+
+
+
+</menu>
