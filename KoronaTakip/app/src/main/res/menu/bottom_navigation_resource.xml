@@ -3,24 +3,19 @@
 
 
     <item
-        android:id="@+id/item_top_list"
-        android:icon="@drawable/ic_timeline_black"
-        android:title="name"/>
-
-    <item
         android:id="@+id/item_graphic"
         android:icon="@drawable/ic_insert_chart_black"
-        android:title="name"/>
+        android:title="Grafikler"/>
 
     <item
         android:id="@+id/item_info"
         android:icon="@drawable/ic_info_black"
-        android:title="name"/>
+        android:title="Bilgilendirme"/>
 
     <item
         android:id="@+id/item_test"
         android:icon="@drawable/ic_test_black"
-        android:title="name"/>
+        android:title="Kendinizi Test Edin"/>
 
 
 

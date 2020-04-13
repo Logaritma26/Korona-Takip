@@ -2,15 +2,21 @@ package com.log.koronatakip;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewpager.widget.PagerAdapter;
 
+import java.security.cert.TrustAnchor;
 import java.util.ArrayList;
+
+import static com.log.koronatakip.graphs.viewPager_graph;
 
 public class ViewPagerAdapterBottom extends PagerAdapter {
 
@@ -61,16 +67,43 @@ public class ViewPagerAdapterBottom extends PagerAdapter {
 
     @NonNull
     @Override
-    public Object instantiateItem(@NonNull ViewGroup container, int position) {
+    public Object instantiateItem(@NonNull ViewGroup container, final int position) {
+
+
+
 
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.view_pager_2_container, container, false);
+
+        //isTouch = false;
+
+        final ImageView imageLeft = view.findViewById(R.id.left_arrow);
+        final ImageView imageRight = view.findViewById(R.id.right_arrow);
+
+        if (position == 0){
+            imageLeft.setVisibility(View.GONE);
+            imageRight.setVisibility(View.VISIBLE);
+        }   else if (position == getCount()-1){
+            imageLeft.setVisibility(View.VISIBLE);
+            imageRight.setVisibility(View.GONE);
+        }   else {
+            imageLeft.setVisibility(View.VISIBLE);
+            imageRight.setVisibility(View.VISIBLE);
+        }
+
 
         TextView textView1 = view.findViewById(R.id.container_text_main);
         TextView textView2 = view.findViewById(R.id.container_text_secondary);
 
         textView1.setText(list_int.get(position).toString());
         textView2.setText(list_string.get(position));
+
+
+
+
+
+
+
 
         container.addView(view);
 
@@ -79,6 +112,11 @@ public class ViewPagerAdapterBottom extends PagerAdapter {
 
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+
         container.removeView((ConstraintLayout)object);
     }
+
+
+
+
 }

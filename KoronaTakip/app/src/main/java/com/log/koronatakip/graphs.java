@@ -1,9 +1,11 @@
 package com.log.koronatakip;
 
 import android.app.Activity;
+import android.app.Notification;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
@@ -11,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -27,7 +30,8 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class graphs extends Fragment  {
+
+public class graphs extends Fragment {
 
 
     public static SearchView searchView;
@@ -37,7 +41,6 @@ public class graphs extends Fragment  {
     ArrayAdapter<String> searchList_adapter;
 
 
-    //Spinner spinner;
     ArrayList<String> spinnerItems = new ArrayList<>();
     ArrayList<String> Slug = new ArrayList<>();
 
@@ -60,11 +63,16 @@ public class graphs extends Fragment  {
     final String baseUrl = "https://api.covid19api.com/";
 
 
+
     ViewPager viewPager2;
     ViewPagerAdapterBottom viewPagerAdapterBottom;
 
+
     public static ViewPager viewPager_graph;
     ViewPagerAdapter_Graph viewPagerAdapter_graph;
+
+    TextView textView_country;
+
 
     Context context;
     Activity activity_graph;
@@ -83,6 +91,7 @@ public class graphs extends Fragment  {
 
 
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -94,6 +103,8 @@ public class graphs extends Fragment  {
         super.onViewCreated(view, savedInstanceState);
 
         // init elements
+
+        textView_country = view.findViewById(R.id.text_country);
 
         listView = view.findViewById(R.id.list_item);
 
@@ -195,14 +206,14 @@ public class graphs extends Fragment  {
 
 
 
-
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 for (int a = 0; a < spinnerItems.size() ; a++) {
                     if (listView.getItemAtPosition(position).equals(spinnerItems.get(a))){
+
+                        textView_country.setText(spinnerItems.get(a));
 
                         Call<List<SpesificData>> call = jsonPlaceHolderApi.getSpesificData(Slug.get(a));
                         call.enqueue(new Callback<List<SpesificData>>() {
@@ -223,41 +234,41 @@ public class graphs extends Fragment  {
                                             String s2 = Date.get(Date.size()-1);
                                             if (s1.equals(s2)){
                                                 ConfirmedArray.set(ConfirmedArray.size()-1, ConfirmedArray.get(ConfirmedArray.size()-1)+spesificData.getConfirmed());
-                                                ActiveArray.set(ActiveArray.size()-1, ActiveArray.get(ActiveArray.size()-1)+spesificData.getActive());
                                                 RecoveredArray.set(RecoveredArray.size()-1, RecoveredArray.get(RecoveredArray.size()-1)+spesificData.getRecovered());
                                                 DeathsArray.set(DeathsArray.size()-1, DeathsArray.get(DeathsArray.size()-1)+spesificData.getDeaths());
 
+                                                //ActiveArray.set(ActiveArray.size()-1, ActiveArray.get(ActiveArray.size()-1)+spesificData.getActive());
+                                                ActiveArray.set(ActiveArray.size()-1, ActiveArray.get(ActiveArray.size()-1)
+                                                        +spesificData.getConfirmed()
+                                                        -spesificData.getRecovered()
+                                                        -spesificData.getDeaths());
+
                                             } else {
                                                 ConfirmedArray.add(spesificData.getConfirmed());
-                                                ActiveArray.add(spesificData.getActive());
                                                 RecoveredArray.add(spesificData.getRecovered());
                                                 DeathsArray.add(spesificData.getDeaths());
 
+                                                //ActiveArray.add(spesificData.getActive());
+                                                ActiveArray.add(
+                                                        +spesificData.getConfirmed()
+                                                        -spesificData.getRecovered()
+                                                        -spesificData.getDeaths());
                                             }
                                         } else {
                                             ConfirmedArray.add(spesificData.getConfirmed());
-                                            ActiveArray.add(spesificData.getActive());
                                             RecoveredArray.add(spesificData.getRecovered());
                                             DeathsArray.add(spesificData.getDeaths());
+
+                                            //ActiveArray.add(spesificData.getActive());
+                                            ActiveArray.add(
+                                                    +spesificData.getConfirmed()
+                                                    -spesificData.getRecovered()
+                                                    -spesificData.getDeaths());
+
                                         }
 
                                     }
 
-
-                            /*if (check){
-                                Date_Parameter.add(0,Date.get(0));
-                                for (int a = 0; a < Date.size() ; a ++){
-                                    isThere_matchup = false;
-                                    for (int q = 0 ; q < Date_Parameter.size(); q++){
-                                        if (Date.get(a).equals(Date_Parameter.get(q))){
-                                            isThere_matchup = true;
-                                        }
-                                        if (!isThere_matchup){
-                                            Date_Parameter.add(Date.get(a));
-                                        }
-                                    }
-                                }
-                            }*/
 
 
                                     if (ConfirmedArray.size() > 2){
@@ -281,13 +292,14 @@ public class graphs extends Fragment  {
                                     } else {    deahts = 0;}
 
 
+                                    // calling bottom viewpager
                                     viewPagerAdapterBottom = new ViewPagerAdapterBottom(activity_graph,
                                             confirmed, active, recovered, deahts, Last24);
                                     viewPager2.setAdapter(viewPagerAdapterBottom);
                                     viewPager2.setClipToPadding(false);
                                     viewPager2.setPageMargin(200);
 
-
+                                    // calling top viewpager
                                     viewPagerAdapter_graph = new ViewPagerAdapter_Graph(activity_graph,
                                             ConfirmedArray,ActiveArray, RecoveredArray,DeathsArray, Date_Parameter);
                                     viewPager_graph.setAdapter(viewPagerAdapter_graph);
@@ -322,10 +334,57 @@ public class graphs extends Fragment  {
 
 
 
-        listView.performItemClick(listView, 2, listView.getItemIdAtPosition(2));
+        listView.performItemClick(listView, 227, listView.getItemIdAtPosition(2));
 
 
-        //listView.setSelection(236);
+        /*MotionEvent event = MotionEvent.obtain(10, 30, MotionEvent.ACTION_DOWN,
+                viewPager2.getX(), viewPager2.getY(), 10, 1,
+                2, viewPager2.getX(), viewPager2.getY(),
+                viewPager2.getId(), 3);*/
+
+        //onTouchEvent(event);
+
+        viewPager2.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+                if (position == 4){
+
+                } else {
+                    viewPager_graph.setCurrentItem(position, true);
+                }
+
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+        viewPager_graph.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                viewPager2.setCurrentItem(position, true);
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
     }
 
@@ -337,7 +396,6 @@ public class graphs extends Fragment  {
             imm.hideSoftInputFromWindow(view.getWindowToken(),0);
         }
     }
-
 
     private void clear_Arrays() {
         ConfirmedArray.clear();
@@ -386,6 +444,7 @@ public class graphs extends Fragment  {
         arrayList.set(index1, s2);
         arrayList.set(index2, s1);
     }
+
 
 
 }

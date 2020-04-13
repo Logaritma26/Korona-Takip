@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">Korona Takip</string>
 
-    <string name="total_cases">Total Cases</string>
-    <string name="last24">Son 24 Saat</string>
-    <string name="active_cases">Mevcut Vakalar</string>
-    <string name="deaths">Ölüm Sayisi</string>
-    <string name="recoveries">Iyilesme Sayisi</string>
+    <string name="total_cases">Toplam Vaka Sayısı</string>
+    <string name="last24">Yeni Vakalar</string>
+    <string name="active_cases">Aktif Vaka Sayısı</string>
+    <string name="deaths">Ölüm Sayısı</string>
+    <string name="recoveries">İyileşen Hasta Sayısı</string>
 
 
 </resources>

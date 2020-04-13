@@ -3,6 +3,7 @@ package com.log.koronatakip;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,12 +13,14 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -42,9 +45,9 @@ public class MainActivity extends AppCompatActivity {
 
         navigationView.setOnNavigationItemSelectedListener( navListener);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new top_list()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new informing_section()).commit();
 
-
+        navigationView.setSelectedItemId(R.id.item_info);
 
 
 
@@ -71,6 +74,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+
+
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
@@ -79,9 +85,6 @@ public class MainActivity extends AppCompatActivity {
 
                     switch (item.getItemId()){
 
-                        case R.id.item_top_list:
-                            selected_fragment = new top_list();
-                            break;
 
                         case R.id.item_graphic:
                             selected_fragment = new graphs();
@@ -97,10 +100,18 @@ public class MainActivity extends AppCompatActivity {
 
                     }
 
+
+
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selected_fragment).commit();
 
                     return true;
                 }
             };
+
+
+
+
+
+
 
 }

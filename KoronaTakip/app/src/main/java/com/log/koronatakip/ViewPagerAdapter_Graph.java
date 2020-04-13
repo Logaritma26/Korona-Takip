@@ -101,10 +101,10 @@ public class ViewPagerAdapter_Graph extends PagerAdapter {
         colors.add(3, ContextCompat.getColor(context,R.color.recovery));
 
 
-        explanation.add("toplam vaka sayisi");
-        explanation.add("Aktif vaka sayisi");
-        explanation.add("olum sayisi");
-        explanation.add("isilesen hasta sayisi");
+        explanation.add("Toplam Vaka Sayısı");
+        explanation.add("Aktif Vaka Sayısı");
+        explanation.add("Ölüm Sayısı");
+        explanation.add("İyileşen Hasta Sayısı");
 
 
     }
@@ -132,6 +132,7 @@ public class ViewPagerAdapter_Graph extends PagerAdapter {
         barDataSet.setColors(colors.get(position));
         barDataSet.setDrawIcons(false);
         barDataSet.setDrawValues(true);
+        barDataSet.setValueTextSize(13f);
 
         barData = new BarData(barDataSet);  // dataSets
 
@@ -140,7 +141,7 @@ public class ViewPagerAdapter_Graph extends PagerAdapter {
 
         chart.getDescription().setText(""); // set description label to space
         chart.setFitBars(true); // make the x-axis fit exactly all bars
-        chart.animateY(500); // animate charts
+        chart.animateY(1000); // animate charts
         chart.setPinchZoom(false);
 
         chart.setData(barData);

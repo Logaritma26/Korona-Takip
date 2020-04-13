@@ -12,6 +12,10 @@ public interface JsonPlaceHolderApi {
     Call<List<Countries>> getCountries();
 
 
-    @GET("live/country/{slugCountry}/status/confirmed")
+    /*@GET("live/country/{slugCountry}/status/confirmed")
+    Call<List<SpesificData>> getSpesificData(@Path("slugCountry") String slugCountry);*/
+
+    @GET("total/country/{slugCountry}")
     Call<List<SpesificData>> getSpesificData(@Path("slugCountry") String slugCountry);
+
 }
