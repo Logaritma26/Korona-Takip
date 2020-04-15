@@ -11,6 +11,7 @@ Also if you want, you can download the apk and install app to your android devic
 # Built With
 
 Maven - Dependency Management
+
 PhilJay/MPAndroidChart - Used to display charts 
 
 # License
