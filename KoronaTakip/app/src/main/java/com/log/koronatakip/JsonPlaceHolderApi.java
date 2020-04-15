@@ -18,4 +18,7 @@ public interface JsonPlaceHolderApi {
     @GET("total/country/{slugCountry}")
     Call<List<SpesificData>> getSpesificData(@Path("slugCountry") String slugCountry);
 
+    //total/country/{slugCountry}
+    //live/country/south-africa
+
 }

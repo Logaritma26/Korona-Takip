@@ -31,15 +31,22 @@ public class Recyclerview_informing extends RecyclerView.Adapter <Recyclerview_i
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
+
         holder.text_title.setText(text_title.get(position));
         holder.text_content.setText(text_content.get(position));
+
+        if (text_title.get(position).equals("")){
+            holder.text_title.setVisibility(View.GONE);
+        }
+
 
     }
 
 
     @Override
     public int getItemCount() {
-        return text_title.size();
+        return text_content.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

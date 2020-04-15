@@ -94,9 +94,6 @@ public class MainActivity extends AppCompatActivity {
                             selected_fragment = new informing_section();
                             break;
 
-                        case R.id.item_test:
-                            selected_fragment = new self_test();
-                            break;
 
                     }
 

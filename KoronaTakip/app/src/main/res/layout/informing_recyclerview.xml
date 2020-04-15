@@ -3,21 +3,48 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginBottom="25dp">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="25dp"
+    android:layout_marginTop="25dp">
 
+
+    <TextView
+        android:id="@+id/informing_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+
+        android:textSize="18sp"
+        android:textColor="@color/container_text" />
     <TextView
         android:id="@+id/recycler_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
+        android:gravity="center"
+        android:textColor="@color/container_text"
+        android:textSize="22sp"
+        android:textStyle="bold"
+
         android:layout_marginTop="3dp"
-        android:layout_marginBottom="5dp"/>
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
 
     <TextView
         android:id="@+id/recycler_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"/>
+
+        android:textSize="18sp"
+        android:textColor="@color/container_text"
+
+        android:layout_marginTop="3dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
 
 </LinearLayout>

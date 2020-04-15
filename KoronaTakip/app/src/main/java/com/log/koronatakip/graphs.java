@@ -337,12 +337,6 @@ public class graphs extends Fragment {
         listView.performItemClick(listView, 227, listView.getItemIdAtPosition(2));
 
 
-        /*MotionEvent event = MotionEvent.obtain(10, 30, MotionEvent.ACTION_DOWN,
-                viewPager2.getX(), viewPager2.getY(), 10, 1,
-                2, viewPager2.getX(), viewPager2.getY(),
-                viewPager2.getId(), 3);*/
-
-        //onTouchEvent(event);
 
         viewPager2.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override

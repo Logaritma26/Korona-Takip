@@ -12,10 +12,6 @@
         android:icon="@drawable/ic_info_black"
         android:title="Bilgilendirme"/>
 
-    <item
-        android:id="@+id/item_test"
-        android:icon="@drawable/ic_test_black"
-        android:title="Kendinizi Test Edin"/>
 
 
 

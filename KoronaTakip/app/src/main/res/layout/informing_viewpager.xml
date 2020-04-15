@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -10,15 +12,52 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:textColor="@color/container_text"
+        android:textSize="30sp"
+
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/left_arrow_i"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_arrow_left"
+
+
+        app:layout_constraintBottom_toBottomOf="@+id/informing_recycler"
+        app:layout_constraintEnd_toStartOf="@+id/informing_recycler"
+        app:layout_constraintTop_toTopOf="@+id/informing_recycler" />
+
+    <ImageView
+        android:id="@+id/right_arrow_i"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_arrow_right"
+
+
+        app:layout_constraintBottom_toBottomOf="@+id/informing_recycler"
+        app:layout_constraintStart_toEndOf="@+id/informing_recycler"
+        app:layout_constraintTop_toTopOf="@+id/informing_recycler" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/informing_recycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="3dp"/>
+        android:layout_height="wrap_content"
 
-</LinearLayout>
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+
+
+
+
+        app:layout_constraintTop_toBottomOf="@+id/informing_title" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
